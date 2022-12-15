@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppTheme } from '../theme'
+import { AppTheme } from './theme'
 import { AppRouter } from './router/AppRouter'
 
 export const JournalApp = () => {
