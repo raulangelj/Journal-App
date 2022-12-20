@@ -1,28 +1,31 @@
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
-import React from "react";
+import React, { useMemo } from "react";
 import { AuthLayout } from "../layout";
 import { useForm } from "../../share";
 import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
   const { email, password, onInputChange } = useForm({
     email: "",
     password: "",
   });
 
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log({ email, password });
-    dispatch(checkingAuthentication())
+    dispatch(checkingAuthentication());
   };
 
   const onGoogleSignIn = () => {
     console.log("Google Sign In");
-    dispatch(startGoogleSignIn())
+    dispatch(startGoogleSignIn());
   };
 
   return (
@@ -53,12 +56,22 @@ export const LoginPage = () => {
           </Grid>
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12} sm={6}>
-              <Button variant="contained" fullWidth type="submit">
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                disabled={isAuthenticating}
+              >
                 Login
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button variant="contained" fullWidth onClick={onGoogleSignIn}>
+              <Button
+                variant="contained"
+                fullWidth
+                onClick={onGoogleSignIn}
+                disabled={isAuthenticating}
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
