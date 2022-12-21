@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import React, { useMemo } from "react";
 import { AuthLayout } from "../layout";
-import { useForm } from "../../share";
+import { useForm } from "../../shared";
 import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
 
 export const LoginPage = () => {

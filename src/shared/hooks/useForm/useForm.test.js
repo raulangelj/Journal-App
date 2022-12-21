@@ -43,4 +43,12 @@ describe('Testing useForm', () => {
     expect(name).toBe(initialForm.name);
     expect(formState.name).toBe(initialForm.name);
   })
+
+  test('Validate the form', () => {
+    const { result } = renderHook(() => useForm(initialForm, {
+      name: [(value) => value.length > 0, 'The name is required'],
+      email: [(value) => value.includes('@'), 'The email should contain @']
+    }));
+    const { formState, errors, isFormValid } = result.current;
+  })
 })

@@ -1,7 +1,7 @@
 import { SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
-import { ImageGallery } from "../../share";
+import { ImageGallery } from "../../shared";
 
 export const NoteView = () => {
   return (

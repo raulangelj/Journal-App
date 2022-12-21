@@ -1,6 +1,6 @@
 import { Box, Toolbar } from "@mui/material";
 import React from "react";
-import { Navbar, SideBar } from "../../share";
+import { Navbar, SideBar } from "../../shared";
 
 const drawerWidth = 240;
 
