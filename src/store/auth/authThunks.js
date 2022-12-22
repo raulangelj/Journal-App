@@ -1,4 +1,5 @@
 import {
+  loginWithEmailPassword,
   signInWithEmailPassword,
   signInWithGoogle,
 } from "../../firebase/providers";
@@ -15,7 +16,12 @@ export const startGoogleSignIn = () => {
     dispatch(checkingCredentials());
     const result = await signInWithGoogle();
     if (!result.ok)
-      return dispatch(logout({ errorMessage: result.errorMessage, errorCode: result.errorCode }));
+      return dispatch(
+        logout({
+          errorMessage: result.errorMessage,
+          errorCode: result.errorCode,
+        })
+      );
     dispatch(login(result));
   };
 };
@@ -23,12 +29,23 @@ export const startGoogleSignIn = () => {
 export const startEmailPasswordSignIn = ({ email, password, displayName }) => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
-    const { ok, uid, photoURL, errorMessage, errorCode } = await signInWithEmailPassword({
-      email,
-      password,
-      displayName,
-    });
+    const { ok, uid, photoURL, errorMessage, errorCode } =
+      await signInWithEmailPassword({
+        email,
+        password,
+        displayName,
+      });
     if (!ok) return dispatch(logout({ errorMessage, errorCode }));
     dispatch(login({ uid, photoURL, email, displayName }));
   };
+};
+
+export const startLoginWithEmailPassword = ({ email, password }) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+    const { ok, photoURL, uid, displayName, errorCode, errorMessage } = await loginWithEmailPassword({ email, password });
+    if (!ok) return dispatch(logout({ errorMessage, errorCode }));
+    dispatch(login({ uid, photoURL, email, displayName }));
+
+  }
 };
