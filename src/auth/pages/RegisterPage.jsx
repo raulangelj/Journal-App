@@ -59,7 +59,10 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Sign In">
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -80,6 +83,7 @@ export const RegisterPage = () => {
               type="email"
               placeholder="correo@google.com"
               fullWidth
+              autoComplete="off"
               name="email"
               value={email}
               onChange={onInputChange}
@@ -94,6 +98,7 @@ export const RegisterPage = () => {
               placeholder="correo@google.com"
               fullWidth
               name="password"
+              autoComplete="off"
               value={password}
               onChange={onInputChange}
               error={!!passwordValid && fromSubmitted}
