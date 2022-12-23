@@ -1,4 +1,3 @@
-import { TurnedInNot } from "@mui/icons-material";
 import {
   Box,
   Divider,
@@ -14,6 +13,7 @@ import { SideBarItem } from "./SideBarItem";
 export const SideBar = ({ drawerWidth }) => {
   const { displayName } = useSelector((state) => state.auth);
   const { notes } = useSelector((state) => state.journal);
+
   return (
     <Box
       component={"nav"}
