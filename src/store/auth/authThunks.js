@@ -23,7 +23,8 @@ export const startGoogleSignIn = () => {
           errorCode: result.errorCode,
         })
       );
-    dispatch(login(result));
+      // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
+    // dispatch(login(result));
   };
 };
 
@@ -46,7 +47,8 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
     dispatch(checkingCredentials());
     const { ok, photoURL, uid, displayName, errorCode, errorMessage } = await loginWithEmailPassword({ email, password });
     if (!ok) return dispatch(logout({ errorMessage, errorCode }));
-    dispatch(login({ uid, photoURL, email, displayName }));
+    // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
+    // dispatch(login({ uid, photoURL, email, displayName }));
 
   }
 };
@@ -54,6 +56,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 export const startingLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
-    dispatch(logout())
+    // NOT NEEDD: SINCE IN USEcHECKaUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGOUT WHEN FIREBASE USER CHANGE
+    // dispatch(logout())
   }
 };
