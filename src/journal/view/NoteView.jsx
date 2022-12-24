@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ImageGallery, useForm } from "../../shared";
-import { setActiveNote, startSavingNote } from "../../store/journal";
+import { setActiveNote, startSavingNote, startUploadingFiles } from "../../store/journal";
 import Swal from "sweetalert2";
 import { useRef } from "react";
 
@@ -36,8 +36,8 @@ export const NoteView = () => {
   };
 
   const onFileInputChange = (e) => {
-    console.log(e.target.files);
     if (e.target.files.length === 0) return;
+    dispatch(startUploadingFiles(e.target.files))
   };
 
   return (
