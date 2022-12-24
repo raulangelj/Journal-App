@@ -4,6 +4,7 @@ import {
   signInWithEmailPassword,
   signInWithGoogle,
 } from "../../firebase/providers";
+import { clearNotesLogout } from "../journal";
 import { checkingCredentials, logout, login } from "./authSlice";
 
 export const checkingAuthentication = (email, password) => {
@@ -56,6 +57,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 export const startingLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
+    dispatch(clearNotesLogout())
     // NOT NEEDD: SINCE IN USEcHECKaUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGOUT WHEN FIREBASE USER CHANGE
     // dispatch(logout())
   }
