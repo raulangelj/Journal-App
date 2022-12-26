@@ -1,2 +1,2 @@
 export * from "./authSlice/authSlice";
-export * from "./authThunks";
+export * from "./authThunks/authThunks";

@@ -33,4 +33,5 @@ export const demoUser = {
   email: 'demo@google.com',
   displayName: 'Demo User',
   photoURL: 'https://demo.jpg',
+  password: '1234567',
 }

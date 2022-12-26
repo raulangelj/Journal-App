@@ -3,9 +3,9 @@ import {
   logoutFirebase,
   signInWithEmailPassword,
   signInWithGoogle,
-} from "../../firebase/providers";
-import { clearNotesLogout } from "../journal";
-import { checkingCredentials, logout, login } from "./";
+} from "../../../firebase/providers";
+import { clearNotesLogout } from "../../journal";
+import { checkingCredentials, logout, login } from "..";
 
 export const checkingAuthentication = (email, password) => {
   return async (dispatch) => {
@@ -24,7 +24,7 @@ export const startGoogleSignIn = () => {
           errorCode: result.errorCode,
         })
       );
-      // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
+    // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
     // dispatch(login(result));
   };
 };
@@ -39,26 +39,27 @@ export const startEmailPasswordSignIn = ({ email, password, displayName }) => {
         displayName,
       });
     if (!ok) return dispatch(logout({ errorMessage, errorCode }));
-    dispatch(login({ uid, photoURL, email, displayName }));
+    // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
+    // dispatch(login({ uid, photoURL, email, displayName }));
   };
 };
 
 export const startLoginWithEmailPassword = ({ email, password }) => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
-    const { ok, photoURL, uid, displayName, errorCode, errorMessage } = await loginWithEmailPassword({ email, password });
+    const { ok, photoURL, uid, displayName, errorCode, errorMessage } =
+      await loginWithEmailPassword({ email, password });
     if (!ok) return dispatch(logout({ errorMessage, errorCode }));
     // NOT NEEDED: SINCE IN USECHECKAUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGIN WHEN FIREBASE USER CHANGE
     // dispatch(login({ uid, photoURL, email, displayName }));
-
-  }
+  };
 };
 
 export const startingLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
-    dispatch(clearNotesLogout())
+    dispatch(clearNotesLogout());
     // NOT NEEDD: SINCE IN USEcHECKaUTH WE HAVE AN OBSERVABLE THAT WILL DISPATCH THE LOGOUT WHEN FIREBASE USER CHANGE
     // dispatch(logout())
-  }
+  };
 };
