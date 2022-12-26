@@ -6,17 +6,17 @@ export const initialState = {
   photoURL: null,
   errorMessage: null,
   errorCode: null,
-}
+};
 
 export const authenticatedState = {
   status: "authenticated",
-  uid: '123ABC',
-  email: 'demo@google.com',
-  displayName: 'Demo User',
-  photoURL: 'https://demo.jpg',
+  uid: "TEST-UID",
+  email: "demo@google.com",
+  displayName: "Demo User",
+  photoURL: "https://demo.jpg",
   errorMessage: null,
   errorCode: null,
-}
+};
 
 export const notAuthenticatedState = {
   status: "not-authenticated",
@@ -26,12 +26,12 @@ export const notAuthenticatedState = {
   photoURL: null,
   errorMessage: null,
   errorCode: null,
-}
+};
 
 export const demoUser = {
-  uid: '123ABC',
-  email: 'demo@google.com',
-  displayName: 'Demo User',
-  photoURL: 'https://demo.jpg',
-  password: '1234567',
-}
+  uid: "TEST-UID",
+  email: "demo@google.com",
+  displayName: "Demo User",
+  photoURL: "https://demo.jpg",
+  password: "1234567",
+};
