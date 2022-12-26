@@ -1,0 +1,11 @@
+# Journal app
+
+About
+This is a simple react app to learn more about testing and hooks. Use of Material UI + Firebase + Redux + Theme + SweetAlert2 + Cloudinary + Vercel.
+
+## Backend - Firebase
+
+Here are the links of the firebase proyecto for both testing (stag) and prod env.
+
+[STAG ENV](https://console.firebase.google.com/u/0/project/journal-app-curso-stag)
+[PROD ENV](https://console.firebase.google.com/u/0/project/journal-app-curso-46e61)
