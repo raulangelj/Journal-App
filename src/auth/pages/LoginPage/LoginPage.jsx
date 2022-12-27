@@ -10,18 +10,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import React, { useMemo } from "react";
-import { AuthLayout } from "../layout";
-import { useForm } from "../../shared";
+import { AuthLayout } from "../../layout";
+import { useForm } from "../../../shared";
 import {
   checkingAuthentication,
   startGoogleSignIn,
   startLoginWithEmailPassword,
-} from "../../store/auth";
+} from "../../../store/auth";
 
 const formData = {
   email: "",
   password: "",
-}
+};
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -64,6 +64,9 @@ export const LoginPage = () => {
               type="password"
               placeholder="correo@google.com"
               fullWidth
+              inputProps={{
+                "data-testid": "password",
+              }}
               name="password"
               onChange={onInputChange}
               value={password}
@@ -81,6 +84,7 @@ export const LoginPage = () => {
                 fullWidth
                 type="submit"
                 disabled={isAuthenticating}
+                aria-label="login-btn"
               >
                 Login
               </Button>
@@ -91,6 +95,7 @@ export const LoginPage = () => {
                 fullWidth
                 onClick={onGoogleSignIn}
                 disabled={isAuthenticating}
+                aria-label="google-btn"
               >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
